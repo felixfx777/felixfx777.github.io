@@ -24,13 +24,17 @@
                 <div class="input-group-addon">{{ newTask.curr }}</div>
             </div>
         </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+        <div class="col-lg-2 col-md-2 col-sm-2 hidden-xs">
             <a class='btn btn-success btn-lg' href='' ng-show='buttonCtrl == 0' ng-click='startTimer()'> СТАРТ </a>
             <a class='btn btn-danger btn-lg' href='' ng-show='buttonCtrl != 0' ng-click='stopTimer()'> СТОП </a>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 col-md-offset-5 col-sm-6 col-sm-offset-5 col-xs-6 col-xs-offset-5">
+        <div class="visible-xs-6">
+            <a class='btn btn-success btn-lg' href='' ng-show='buttonCtrl == 0' ng-click='startTimer()'> СТАРТ </a>
+            <a class='btn btn-danger btn-lg' href='' ng-show='buttonCtrl != 0' ng-click='stopTimer()'> СТОП </a>
+        </div>
+        <div class="col-md-6 col-md-offset-5 col-sm-6 col-sm-offset-5 col-xs-6 col-xs-offset-0">
              <div class="my-timer"><h1>{{ times.minutes }}:{{ times.seconds }}</h1></div>
         </div>
     </div>
