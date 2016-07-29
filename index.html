@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularApp1</title>
+        <title>AngularJS Prototype</title>
+        <!-- Bootstrap main css file -->
+        <link href="css/bootstrap.css" rel="stylesheet" />
+        <!-- Bootstrap template css file -->
+        <link href="css/bootstrap-theme.css" rel="stylesheet" />
+        <!-- Angular js file -->
+        <script src="js/angular.min.js"></script>
+</head>
+<body>
+<div class="container" ng-app="myApp" ng-controller="TimerCtrl">
+    <header class="my-header"> <h3>Менеджер задач на AngularJS<small> Можно расчитать стоимость задачи</small></h3></header>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+                <input class='form-control input-lg' ng-model='newTask.name' name='task' type='text' placeholder='Впишите задачу'>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-5 col-xs-9">
+            <div class="input-group">
+                <input class='form-control input-lg' ng-model='newTask.cost' name='cost' type='number' placeholder='Стоимость задачи'>
+                <div class="input-group-addon">{{ newTask.curr }}</div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-lg-offset-0 col-md-2 col-md-offset-0 col-sm-2 col-sm-offset-0 col-xs-3 col-xs-offset-0">
+            <a class='btn btn-success btn-lg' href='' ng-show='buttonCtrl == 0' ng-click='startTimer()'> СТАРТ </a>
+            <a class='btn btn-danger btn-lg' href='' ng-show='buttonCtrl != 0' ng-click='stopTimer()'> СТОП </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-5 col-sm-6 col-sm-offset-5 col-xs-6 col-xs-offset-5">
+             <div class="my-timer"><h1>{{ times.minutes }}:{{ times.seconds }}</h1></div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Задача</th>
+                <th>Время</th>
+                <th>Стоимость</th>
+                <th>Итого: время и стоимость</th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="task in tasks track by $index">
+            <tr ng-if='task != activeTask'>
+                <td>{{ task.name }}</td>
+                <td>{{ task.time }}</td>
+                <td>{{ task.cost }}{{ task.curr }}</td>
+                <td>{{ task.overall }}</td>
+                <td>
+                    <a class='btn btn-primary btn-xs' href='' ng-click='edit(task)'> редактировать </a>
+                    <a class='btn btn-danger btn-xs' href='' ng-click='delete(task)'> удалить </a>
+                </td>
+            </tr>
+            <tr ng-if='task == activeTask'>
+                <td><input class='form-control' ng-model='activeTask.name' type='text'></td>
+                <td>{{ task.time }}</td>
+                <td><input class='form-control' ng-model='activeTask.cost' type='text'></td>
+                <td>{{ task.overall }}</td>
+                <td>
+                    <a class='btn btn-warning' href='' ng-click='update(task)'> сохранить </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer class="my-footer">По вопросам можете писать на felixfx@yandex.ru</footer>
+</div>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/timerCtrl.js"></script>
+</body>
+</html>
