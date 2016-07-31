@@ -19,7 +19,7 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
             <div class="input-group">
-                <input class='form-control input-lg' ng-model='newTask.cost' name='cost' type='text' placeholder='Стоимость задачи'>
+                <input class='form-control input-lg' ng-model='newTask.cost' name='cost' type='number' placeholder='Стоимость задачи'>
                 <div class="input-group-addon">{{ newTask.curr }}</div>
             </div>
         </div>
@@ -61,7 +61,7 @@
             <tr ng-show='task == activeTask'>
                 <td><input class='form-control' ng-model='activeTask.name' type='text'></td>
                 <td>{{ task.time }}</td>
-                <td><input class='form-control' ng-model='activeTask.cost' type='text'></td>
+                <td><input class='form-control' ng-model='activeTask.cost' type='number'></td>
                 <td>{{ task.overall }}</td>
                 <td>
                     <a class='btn btn-warning' href='' ng-click='update(task)'> сохранить </a>
