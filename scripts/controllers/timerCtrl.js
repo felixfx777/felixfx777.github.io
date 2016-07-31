@@ -1,4 +1,4 @@
-angular.module('myApp')
+angular.module('myApp', ['ngTouch'])
     .controller('TimerCtrl', function($scope, $timeout) {
         var timer = null;
         var data = JSON.parse(localStorage.getItem("storage"));
