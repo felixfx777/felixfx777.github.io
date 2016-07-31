@@ -5,36 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="format-detection" content="telephone=no">
     <title>AngularTaskTimerApp</title>
-        <!-- Bootstrap main css file -->
-        <link href="css/bootstrap.css" rel="stylesheet" />
-        <!-- Bootstrap template css file -->
-        <link href="css/bootstrap-theme.css" rel="stylesheet" />
+    <!-- Bootstrap main css file -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <!-- Bootstrap template css file -->
+    <link href="css/bootstrap-theme.css" rel="stylesheet" />
 </head>
 <body>
 <div class="container" ng-app="myApp" ng-controller="TimerCtrl">
     <header class="my-header"> <h3>Менеджер задач на AngularJS<small> Можно расчитать стоимость задачи</small></h3></header>
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
-                <input class='form-control input-lg' ng-model='newTask.name' name='task' type='text' placeholder='Впишите задачу'>
+            <input class="form-control input-lg" ng-model="newTask.name" name="task" type="text" placeholder="Впишите задачу">
         </div>
         <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
             <div class="input-group">
-                <input class='form-control input-lg' ng-model='newTask.cost' name='cost' type='number' placeholder='Стоимость задачи'>
+                <input class="form-control input-lg" ng-model="newTask.cost" name="cost" type="number" placeholder="Стоимость задачи">
                 <div class="input-group-addon">{{ newTask.curr }}</div>
             </div>
         </div>
         <div class="visible-lg-2 visible-md-2 visible-sm-2 hidden-xs">
-            <a class='btn btn-success btn-lg' href='' ng-show='buttonCtrl == 0' ng-click='startTimer()'> СТАРТ </a>
-            <a class='btn btn-danger btn-lg' href='' ng-show='buttonCtrl != 0' ng-click='stopTimer()'> СТОП </a>
+            <a class="btn btn-success btn-lg" href="" ng-show="buttonCtrl == 0" ng-click="startTimer()"> СТАРТ </a>
+            <a class="btn btn-danger btn-lg" href="" ng-show="buttonCtrl != 0" ng-click="stopTimer()"> СТОП </a>
         </div>
     </div>
     <div class="row">
         <div class="hidden-lg hidden-md hidden-sm col-xs-6">
-            <a class='btn btn-success btn-lg' href='' ng-show='buttonCtrl == 0' ng-click='startTimer()'> СТАРТ </a>
-            <a class='btn btn-danger btn-lg' href='' ng-show='buttonCtrl != 0' ng-click='stopTimer()'> СТОП </a>
+            <a class="btn btn-success btn-lg" href="" ng-show="buttonCtrl == 0" ng-click="startTimer()"> СТАРТ </a>
+            <a class="btn btn-danger btn-lg" href="" ng-show="buttonCtrl != 0" ng-click="stopTimer()"> СТОП </a>
         </div>
         <div class="col-md-6 col-md-offset-5 col-sm-6 col-sm-offset-5 col-xs-6 col-xs-offset-0">
-             <div class="my-timer"><h1>{{ times.minutes }}:{{ times.seconds }}</h1></div>
+            <div class="my-timer"><h1>{{ times.minutes }}:{{ times.seconds }}</h1></div>
         </div>
     </div>
     <div class="table-responsive">
@@ -48,23 +48,23 @@
             </tr>
             </thead>
             <tbody ng-repeat="task in tasks track by $index">
-            <tr ng-show='task != activeTask'>
+            <tr ng-show="task != activeTask">
                 <td>{{ task.name }}</td>
                 <td>{{ task.time }}</td>
                 <td>{{ task.cost }}{{ task.curr }}</td>
                 <td>{{ task.overall }}</td>
                 <td>
-                    <a class='btn btn-primary btn-xs' href='' ng-click='edit(task)'> редактировать </a>
-                    <a class='btn btn-danger btn-xs' href='' ng-click='delete(task)'> удалить </a>
+                    <a class="btn btn-primary btn-xs" href="" ng-click="edit(task)"> редактировать </a>
+                    <a class="btn btn-danger btn-xs" href="" ng-click="delete(task)"> удалить </a>
                 </td>
             </tr>
-            <tr ng-show='task == activeTask'>
-                <td><input class='form-control' ng-model='activeTask.name' type='text'></td>
+            <tr ng-show="task == activeTask">
+                <td><input class="form-control" ng-model="activeTask.name" type="text"></td>
                 <td>{{ task.time }}</td>
-                <td><input class='form-control' ng-model='activeTask.cost' type='number'></td>
+                <td><input class="form-control" ng-model="activeTask.cost" type="number"></td>
                 <td>{{ task.overall }}</td>
                 <td>
-                    <a class='btn btn-warning' href='' ng-click='update(task)'> сохранить </a>
+                    <a class="btn btn-warning" href="" ng-click="update(task)"> сохранить </a>
                 </td>
             </tr>
             </tbody>
