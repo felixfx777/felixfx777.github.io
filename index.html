@@ -15,17 +15,26 @@
     <header class="my-header"> <h3>Менеджер задач на AngularJS<small> Можно расчитать стоимость задачи</small></h3></header>
     <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
-            <input class="form-control input-lg" ng-model="newTask.name" name="task" type="text" placeholder="Впишите задачу">
+            <div class="form-group">
+                <label for="exampleInputName">Впишите название задачи</label>
+                <input class="form-control input-lg" ng-model="newTask.name" id="exampleInputName" name="task" type="text" placeholder="Ваша задача">
+            </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+            <label for="exampleInputCost">Впишите стоимость задачи</label>
             <div class="input-group">
-                <input class="form-control input-lg" ng-model="newTask.cost" name="cost" type="number" placeholder="Стоимость задачи">
+                <input class="form-control input-lg" ng-model="newTask.cost" id="exampleInputCost" name="cost" type="number" placeholder="1000">
                 <div class="input-group-addon">{{ newTask.curr }}</div>
             </div>
         </div>
         <div class="visible-lg-2 visible-md-2 visible-sm-2 hidden-xs">
+            <div class="form-group">
+            <label for="exampleInputStart">&nbsp;</label>
+                <div id="exampleInputStart">
             <a class="btn btn-success btn-lg" href="" ng-show="buttonCtrl == 0" ng-click="startTimer()"> СТАРТ </a>
             <a class="btn btn-danger btn-lg" href="" ng-show="buttonCtrl != 0" ng-click="stopTimer()"> СТОП </a>
+                    </div>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -34,7 +43,7 @@
             <a class="btn btn-danger btn-lg" href="" ng-show="buttonCtrl != 0" ng-click="stopTimer()"> СТОП </a>
         </div>
         <div class="col-md-6 col-md-offset-5 col-sm-6 col-sm-offset-5 col-xs-6 col-xs-offset-0">
-            <div class="my-timer"><h1>{{ times.minutes }}:{{ times.seconds }}</h1></div>
+            <div class="my-timer"><h1><ng-show ng-show="times.hours > 0">{{ times.hours }}:</ng-show>{{ times.minutes }}:{{ times.seconds }}</h1></div>
         </div>
     </div>
     <div class="table-responsive">
@@ -54,8 +63,8 @@
                 <td>{{ task.cost }}{{ task.curr }}</td>
                 <td>{{ task.overall }}</td>
                 <td>
-                    <a class="btn btn-primary btn-xs" href="" ng-click="edit(task)"> редактировать </a>
-                    <a class="btn btn-danger btn-xs" href="" ng-click="delete(task)"> удалить </a>
+                    <a class="btn btn-primary btn-xs" href="" ng-show="buttonCtrl == 0" ng-click="edit(task)"> редактировать </a>
+                    <a class="btn btn-danger btn-xs" href="" ng-show="buttonCtrl == 0" ng-click="delete(task)"> удалить </a>
                 </td>
             </tr>
             <tr ng-show="task == activeTask">
