@@ -50,16 +50,16 @@ angular.module('myApp')
         if(data == null) {
             $scope.tasks = [];
         }
-        $scope.times = [];
+        
         var currTime = JSON.parse(localStorage.getItem("timer")); // таймер не обнуляется при перезагрузке
-        if($scope.times.seconds === "00") {
+        if(currTime != null) {
+            $scope.times = currTime;
+        } else {
             $scope.times = {
                 hours: "0",
                 minutes: "00",
                 seconds: "00"
             };
-        } else {
-            $scope.times = currTime;
         }
         // добавляем "0" перед одиночными числами
         var _pad = function(length) {
